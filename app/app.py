@@ -4,8 +4,11 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import roc_auc_score, brier_score_loss
+from pathlib import Path
 
-DB_PATH = "data/f1.duckdb"
+APP_DIR = Path(__file__).resolve().parent
+REPO_ROOT = APP_DIR.parent
+DB_PATH = str(REPO_ROOT / "data" / "f1.duckdb")
 
 TARGETS = {
     "Podium (Top 3)": {"table": "v_predictions_podium_2023_full", "prob_col": "p_podium"},
